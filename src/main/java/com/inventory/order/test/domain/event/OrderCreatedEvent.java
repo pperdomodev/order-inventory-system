@@ -1,6 +1,10 @@
 package com.inventory.order.test.domain.event;
 
-public class OrderCreatedEvent {
+import java.io.Serializable;
+
+public class OrderCreatedEvent implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
 	private Long orderId;
 

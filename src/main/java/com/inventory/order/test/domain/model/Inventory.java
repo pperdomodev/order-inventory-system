@@ -46,6 +46,20 @@ public class Inventory {
 		this.productId = productId;
 	}
 
+	public Integer getAvailableQuantity() {
+		return availableQuantity;
+	}
 
+	public void setAvailableQuantity(Integer availableQuantity) {
+		this.availableQuantity = availableQuantity;
+	}
+
+	public Integer getReservedQuantity() {
+		return reservedQuantity;
+	}
+
+	public void setReservedQuantity(Integer reservedQuantity) {
+		this.reservedQuantity = reservedQuantity;
+	}
 
 }
