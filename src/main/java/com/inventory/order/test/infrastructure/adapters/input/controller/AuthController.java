@@ -23,9 +23,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public AuthResponse register(@RequestBody RegisterRequest request) {
-    	System.out.println("USERNAME: " + request.getUsername());
-        System.out.println("EMAIL: " + request.getEmail());
-        System.out.println("PASSWORD: " + request.getPassword());
         return authService.register(request);
     }
 

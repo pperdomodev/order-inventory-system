@@ -31,10 +31,6 @@ public class AuthService {
 			throw new RuntimeException("Email already exists");
 		});
 
-		System.out.println("USERNAME: " + request.getUsername());
-	    System.out.println("EMAIL: " + request.getEmail());
-	    System.out.println("PASSWORD: " + request.getPassword());
-
 		User user = new User(null, request.getUsername(), request.getEmail(),
 				passwordEncoder.encode(request.getPassword()), Role.ROLE_USER);
 
