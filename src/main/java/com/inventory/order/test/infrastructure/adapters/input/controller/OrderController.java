@@ -4,13 +4,18 @@ package com.inventory.order.test.infrastructure.adapters.input.controller;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.inventory.order.test.application.dto.CreateOrderRequest;
 import com.inventory.order.test.application.dto.OrderSearchRequest;
+import com.inventory.order.test.application.dto.UpdateOrderStatusRequest;
 import com.inventory.order.test.application.service.OrderQueryService;
 import com.inventory.order.test.application.service.OrderService;
 import com.inventory.order.test.infrastructure.entity.OrderEntity;
+import com.inventory.order.test.infrastructure.entity.OrderStatusHistoryEntity;
 import com.inventory.order.test.shared.response.ApiResponse;
 
 @RestController
@@ -49,5 +54,28 @@ public class OrderController {
         return orderQueryService.search(
                 request,
                 pageable);
+    }
+    
+    @PatchMapping("/{id}/status")
+    public ApiResponse<Void> updateStatus(
+            @PathVariable Long id,
+            @RequestBody UpdateOrderStatusRequest request) {
+
+        orderService.updateStatus(id, request);
+
+        return new ApiResponse<>(
+                true,
+                "Order status updated",
+                null);
+    }
+    
+    @GetMapping("/{id}/history")
+    public ApiResponse<List<OrderStatusHistoryEntity>>
+    history(@PathVariable Long id) {
+
+        return new ApiResponse<>(
+                true,
+                "Order history",
+                orderService.history(id));
     }
 }
