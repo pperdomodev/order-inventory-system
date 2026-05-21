@@ -1,17 +1,12 @@
 package com.inventory.order.test.infrastructure.adapters.input.messaging;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-
 import org.springframework.retry.annotation.Backoff;
-
 import org.springframework.retry.annotation.Retryable;
-
 import org.springframework.stereotype.Component;
 
 import com.inventory.order.test.application.service.NotificationService;
-
 import com.inventory.order.test.domain.event.OrderCreatedEvent;
-
 import com.inventory.order.test.infrastructure.config.RabbitConfig;
 
 @Component

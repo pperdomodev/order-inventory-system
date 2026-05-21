@@ -1,13 +1,18 @@
 package com.inventory.order.test.infrastructure.adapters.input.controller;
 
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.inventory.order.test.application.dto.CreateOrderRequest;
 import com.inventory.order.test.application.dto.OrderSearchRequest;
@@ -44,7 +49,7 @@ public class OrderController {
                 "Order created successfully",
                 null);
     }
-    
+
     @GetMapping("/search")
     @PreAuthorize("hasRole('USER')")
     public Page<OrderEntity> search(
@@ -55,7 +60,7 @@ public class OrderController {
                 request,
                 pageable);
     }
-    
+
     @PatchMapping("/{id}/status")
     public ApiResponse<Void> updateStatus(
             @PathVariable Long id,
@@ -68,7 +73,7 @@ public class OrderController {
                 "Order status updated",
                 null);
     }
-    
+
     @GetMapping("/{id}/history")
     public ApiResponse<List<OrderStatusHistoryEntity>>
     history(@PathVariable Long id) {

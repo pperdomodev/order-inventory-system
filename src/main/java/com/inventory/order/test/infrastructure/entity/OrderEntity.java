@@ -5,7 +5,15 @@ import java.time.LocalDateTime;
 
 import com.inventory.order.test.domain.model.OrderStatus;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 
 @Entity
 @Table(name = "orders")
@@ -70,4 +78,4 @@ public class OrderEntity {
     public void setTotal(BigDecimal total) {
         this.total = total;
     }
-} 
+}

@@ -2,7 +2,12 @@ package com.inventory.order.test.infrastructure.entity;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "audit_logs")
@@ -65,6 +70,6 @@ public class AuditEntity {
 	public void setCreatedAt(LocalDateTime createdAt) {
 		this.createdAt = createdAt;
 	}
-    
-    
+
+
 }

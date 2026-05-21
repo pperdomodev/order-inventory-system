@@ -27,13 +27,13 @@ public class OrderService {
     private final InventoryRepositoryPort inventoryRepositoryPort;
 
     private final OrderRepositoryPort orderRepositoryPort;
-    
+
     private final OrderJpaRepository orderJpaRepository;
 
     private final OrderStatusHistoryJpaRepository historyRepository;
 
     private final EventPublisher eventPublisher;
-    
+
     public OrderService(
             InventoryRepositoryPort inventoryRepositoryPort,
             OrderRepositoryPort orderRepositoryPort,
@@ -99,7 +99,7 @@ public class OrderService {
                 item.getQuantity(),
                 item.getPrice());
     }
-    
+
     @Transactional
     public void updateStatus(
             Long orderId,
@@ -145,25 +145,21 @@ public class OrderService {
         eventPublisher.publish(
                 new OrderCreatedEvent(orderId));
     }
-    
+
     public List<OrderStatusHistoryEntity>
     history(Long orderId) {
 
         return historyRepository
                 .findByOrderId(orderId);
     }
-    
+
     private void validateTransition(
             OrderStatus current,
             OrderStatus next) {
 
-        if (current == OrderStatus.CREATED
-                && next == OrderStatus.RESERVED) {
-            return;
-        }
-
-        if (current == OrderStatus.RESERVED
-                && next == OrderStatus.PAID) {
+        if ((current == OrderStatus.CREATED
+                && next == OrderStatus.RESERVED) || (current == OrderStatus.RESERVED
+                && next == OrderStatus.PAID)) {
             return;
         }
 

@@ -1,13 +1,11 @@
 package com.inventory.order.test.infrastructure.adapters.output.persistence.specification;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 import org.springframework.data.jpa.domain.Specification;
 
 import com.inventory.order.test.application.dto.OrderSearchRequest;
-
 import com.inventory.order.test.infrastructure.entity.OrderEntity;
 
 import jakarta.persistence.criteria.Predicate;
