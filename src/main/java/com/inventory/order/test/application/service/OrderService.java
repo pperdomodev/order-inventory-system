@@ -163,13 +163,9 @@ public class OrderService {
             return;
         }
 
-        if (current == OrderStatus.PAID
-                && next == OrderStatus.PROCESSING) {
-            return;
-        }
-
-        if (current == OrderStatus.PROCESSING
-                && next == OrderStatus.SHIPPED) {
+        if ((current == OrderStatus.PAID
+                && next == OrderStatus.PROCESSING) || (current == OrderStatus.PROCESSING
+                && next == OrderStatus.SHIPPED)) {
             return;
         }
 

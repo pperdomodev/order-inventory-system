@@ -4,9 +4,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.math.BigDecimal;
-
 import java.util.List;
-
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
 import com.inventory.order.test.application.dto.CreateOrderRequest;
 import com.inventory.order.test.application.dto.OrderItemRequest;
 import com.inventory.order.test.application.service.OrderService;
